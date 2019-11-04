@@ -31,15 +31,19 @@ CREATE TABLE HOTEL.Bookings (
     BookingID                   INT             NOT NULL,       PRIMARY KEY(BookingID),        UNIQUE(BookingID),
     Arrival                     DATETIME        NOT NULL,
     Checkout                    DATETIME        NOT NULL,
-    RoomNumber                  INT,                            FOREIGN KEY(RoomNumber)        REFERENCES Rooms(RoomNumber),
-    CustomerID                  INT             NOT NULL,       FOREIGN KEY(CustomerID)        REFERENCES Customers(CustomerID),
+    RoomNumber                  INT,                            FOREIGN KEY(RoomNumber)        REFERENCES Rooms(RoomNumber)
+        ON DELETE SET NULL          ON UPDATE CASCADE,
+    CustomerID                  INT             NOT NULL,       FOREIGN KEY(CustomerID)        REFERENCES Customers(CustomerID)
+        ON DELETE CASCADE           ON UPDATE CASCADE,
     Nights                      INT             NOT NULL,
     BookingTime                 DATETIME        NOT NULL
 );
 
 CREATE TABLE HOTEL.Payments (
-    BookingID                   INT             NOT NULL,       FOREIGN KEY(BookingID)         REFERENCES Bookings(BookingID),
-    CustomerID                  INT             NOT NULL,       FOREIGN KEY(CustomerID)        REFERENCES Customers(CustomerID),
+    BookingID                   INT             NOT NULL,       FOREIGN KEY(BookingID)         REFERENCES Bookings(BookingID)
+        ON DELETE CASCADE           ON UPDATE CASCADE,
+    CustomerID                  INT             NOT NULL,       FOREIGN KEY(CustomerID)        REFERENCES Customers(CustomerID)
+        ON DELETE CASCADE           ON UPDATE CASCADE,
     Amount                      DECIMAL(5,2)    NOT NULL,
     Paid                        DECIMAL(5,2)                    DEFAULT 0.00,
     PayTime                     DATETIME,
@@ -48,11 +52,14 @@ CREATE TABLE HOTEL.Payments (
 );
 
 CREATE TABLE HOTEL.Cancellations (
-    BookingID                   INT             NOT NULL,       FOREIGN KEY(BookingID)         REFERENCES Bookings(BookingID),
+    BookingID                   INT             NOT NULL,       FOREIGN KEY(BookingID)         REFERENCES Bookings(BookingID)
+        ON DELETE CASCADE           ON UPDATE CASCADE,
     Arrival                     DATETIME        NOT NULL,
     Checkout                    DATETIME        NOT NULL,
-    RoomNumber                  INT             NOT NULL,       FOREIGN KEY(RoomNumber)        REFERENCES Rooms(RoomNumber),
-    CustomerID                  INT             NOT NULL,       FOREIGN KEY(CustomerID)        REFERENCES Customers(CustomerID),
+    RoomNumber                  INT,                            FOREIGN KEY(RoomNumber)        REFERENCES Rooms(RoomNumber)
+        ON DELETE SET NULL          ON UPDATE CASCADE,
+    CustomerID                  INT             NOT NULL,       FOREIGN KEY(CustomerID)        REFERENCES Customers(CustomerID)
+        ON DELETE CASCADE           ON UPDATE CASCADE,
     Nights                      INT             NOT NULL,
     CancelTime                  DATETIME        NOT NULL
 );
