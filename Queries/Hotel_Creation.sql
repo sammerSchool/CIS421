@@ -11,16 +11,17 @@ CREATE TABLE HOTEL.Rooms (
     RoomType                    VARCHAR(50)     NOT NULL,
     PricePerNight               DECIMAL(5,2)    NOT NULL,
     MaxCapacity                 INT             NOT NULL,
-    Occupied                    CHAR(1)         NOT NULL
+    Occupied                    CHAR(1)         NOT NULL        DEFAULT "F"
 );
 
 CREATE TABLE HOTEL.Customers (
     CustomerID                  INT             NOT NULL,       PRIMARY KEY(CustomerID),       UNIQUE(CustomerID),
     FirstName                   VARCHAR(32)     NOT NULL,
-    MiddleInitials              CHAR(1)         NOT NULL,
+    MiddleInitials              CHAR(1),
     LastName                    VARCHAR(32)     NOT NULL,
     Address                     VARCHAR(64)     NOT NULL,
     PostalCode                  VARCHAR(10)     NOT NULL,
+    State                       CHAR(2),
     City                        VARCHAR(64)     NOT NULL,
     Country                     VARCHAR(64)     NOT NULL,
     Email                       VARCHAR(64)     NOT NULL,
@@ -45,10 +46,10 @@ CREATE TABLE HOTEL.Payments (
     CustomerID                  INT             NOT NULL,       FOREIGN KEY(CustomerID)        REFERENCES Customers(CustomerID)
         ON DELETE CASCADE           ON UPDATE CASCADE,
     Amount                      DECIMAL(5,2)    NOT NULL,
-    Paid                        DECIMAL(5,2)                    DEFAULT 0.00,
+    Paid                        DECIMAL(5,2)    NOT NULL        DEFAULT 0.00,
     PayTime                     DATETIME,
     Invoice                     VARCHAR(50),
-    Cancelled                   CHAR(1)                         DEFAULT "F"
+    Cancelled                   CHAR(1)         NOT NULL        DEFAULT "F"
 );
 
 CREATE TABLE HOTEL.Cancellations (
