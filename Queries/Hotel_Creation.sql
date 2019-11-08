@@ -1,9 +1,8 @@
--- DEBUG: Dropping to make sure creation can be done
-DROP SCHEMA HOTEL;
 
 
--- TABLE/SCHEMA CREATION --
-CREATE SCHEMA HOTEL;
+DROP DATABASE IF EXISTS HOTEL;
+CREATE DATABASE HOTEL;
+USE  HOTEL;
 
 
 CREATE TABLE HOTEL.Rooms (
@@ -11,7 +10,9 @@ CREATE TABLE HOTEL.Rooms (
     RoomType                    VARCHAR(50)     NOT NULL,
     PricePerNight               DECIMAL(5,2)    NOT NULL,
     MaxCapacity                 INT             NOT NULL,
-    Occupied                    CHAR(1)         NOT NULL        DEFAULT "F"
+    Occupied                    CHAR(1)         NOT NULL        DEFAULT "F",
+    HousekeeperId               INT             NOT NULL,       FOREIGN KEY (HousekeeperId)     REFERENCES  Employee(EmployeeId)
+        ON DELETE CASCADE          ON UPDATE CASCADE
 );
 
 CREATE TABLE HOTEL.Customers (
@@ -64,4 +65,16 @@ CREATE TABLE HOTEL.Cancellations (
     Nights                      INT             NOT NULL,
     CancelTime                  DATETIME        NOT NULL
 );
+
+CREATE TABLE HOTEL.Employee (
+    FirstName                   VARCHAR(32)     NOT NULL,
+    LastName                    VARCHAR(32)     NOT NULL,
+    EmployeeId                  INT             NOT NULL,       PRIMARY KEY(EmployeeId),        UNIQUE(EmployeeId),
+    SSN                         INT             NOT NULL,                                       UNIQUE(SSN),
+    Birthdate                   DATE        NOT NULL,
+    Address                     VARCHAR(64)     NOT NULL,
+    EmployeeType                VARCHAR(32)     NOT NULL,
+    StartDate                   DATE        NOT NULL
+);
+
 

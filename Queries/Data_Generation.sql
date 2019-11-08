@@ -1,9 +1,11 @@
 INSERT INTO HOTEL.Rooms
-  (RoomNumber,  RoomType,               PricePerNight,  MaxCapacity) 
+  (RoomNumber,  RoomType,               PricePerNight,  MaxCapacity, HousekeeperId) 
 Values 
-  (1,           "Single Studio",        66.00,          1),
-  (2,           "Family Studio #1",     66.00,          4),
-  (3,           "Family Studio #2",     66.00,          4);
+  (1,           "Single Studio",        66.00,          1,  111),
+  (2,           "Family Studio #1",     66.00,          4,  112),
+  (3,           "Family Studio #2",     66.00,          4,  113),
+  (4,           "Queen",                166.00,         4,  114),
+  (5,           "King",                 266.00,         4,  115);
 
 
 
@@ -23,7 +25,7 @@ VALUES
   
 
 INSERT INTO HOTEL.Bookings
-  (BookingID,   Arrival, Checkout, RoomNumber, CustomerID, Nights, BookingTIme),
+  (BookingID,   Arrival, Checkout, RoomNumber, CustomerID, Nights, BookingTIme)
 VALUES
   (1, "2019-04-02 15:00:00", "2019-04-03 10:00:00", 1, 1, 1, "2019-04-01 10:59:57"),
   (2, "2019-04-05 12:00:00", "2019-04-12 10:00:00", 2, 2, 7, "2019-04-05 01:00:57"),
@@ -58,3 +60,14 @@ INSERT INTO HOTEL.Cancellations
   (BookingID, Arrival, Checkout, RoomNumber, CustomerID, Nights, CancelTime)
 VALUES
   (4, "2019-05-05 10:00:00", "2019-05-04 10:59:57", 2, 2, 7, "2019-05-04 16:30:15");
+
+INSERT INTO HOTEL.Employee
+  (FirstName, LastName, EmployeeId, SSN, Birthdate, Address, EmployeeType, StartDate)
+VALUES
+  ("James", "Jones", 111, 123456789, "2000-01-01", "555 Maple", "Housekeeper", "2019-01-02"),
+  ("John", "Johnson", 112, 555114444, "1998-11-01", "53 Orchard", "Housekeeper", "2018-11-02"),
+  ("Joe", "Jim", 113, 123984756, "1990-07-24", "556 Maple", "Housekeeper", "2017-02-22"),
+  ("Bob", "Cooter", 114, 834927781, "1988-08-08", "888 Orchard", "Housekeeper", "2016-11-04"),
+  ("Frank", "Frankenstien", 115, 333224444, "1964-07-01", "1212 Green", "Housekeeper", "2000-05-22"),
+  ("Tom", "Brady", 188, 765831174, "1972-12-25", "7 Goat", "Manager", "1996-01-02"),
+  ("Bruce", "Wayne", 888, 314283955, "1972-12-24", "1 Gotham", "Manager", "2011-08-12");
