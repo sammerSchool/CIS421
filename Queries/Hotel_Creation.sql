@@ -5,16 +5,6 @@ CREATE DATABASE HOTEL;
 USE  HOTEL;
 
 
-CREATE TABLE HOTEL.Rooms (
-    RoomNumber                  INT             NOT NULL,       PRIMARY KEY(RoomNumber),       UNIQUE(RoomNumber),
-    RoomType                    VARCHAR(50)     NOT NULL,
-    PricePerNight               DECIMAL(5,2)    NOT NULL,
-    MaxCapacity                 INT             NOT NULL,
-    Occupied                    CHAR(1)         NOT NULL        DEFAULT "F",
-    HousekeeperId               INT             NOT NULL,       FOREIGN KEY (HousekeeperId)     REFERENCES  Employee(EmployeeId)
-        ON DELETE CASCADE          ON UPDATE CASCADE
-);
-
 CREATE TABLE HOTEL.Customers (
     CustomerID                  INT             NOT NULL,       PRIMARY KEY(CustomerID),       UNIQUE(CustomerID),
     FirstName                   VARCHAR(32)     NOT NULL,
@@ -27,6 +17,27 @@ CREATE TABLE HOTEL.Customers (
     Country                     VARCHAR(64)     NOT NULL,
     Email                       VARCHAR(64)     NOT NULL,
     Phone                       VARCHAR(64)     NOT NULL
+);
+
+CREATE TABLE HOTEL.Employee (
+    FirstName                   VARCHAR(32)     NOT NULL,
+    LastName                    VARCHAR(32)     NOT NULL,
+    EmployeeId                  INT             NOT NULL,       PRIMARY KEY(EmployeeId),        UNIQUE(EmployeeId),
+    SSN                         VARCHAR(9)      NOT NULL,                                       UNIQUE(SSN),
+    Birthdate                   DATE            NOT NULL,
+    Address                     VARCHAR(64)     NOT NULL,
+    EmployeeType                VARCHAR(32)     NOT NULL,
+    StartDate                   DATE            NOT NULL
+);
+
+CREATE TABLE HOTEL.Rooms (
+    RoomNumber                  INT             NOT NULL,       PRIMARY KEY(RoomNumber),       UNIQUE(RoomNumber),
+    RoomType                    VARCHAR(50)     NOT NULL,
+    PricePerNight               DECIMAL(5,2)    NOT NULL,
+    MaxCapacity                 INT             NOT NULL,
+    Occupied                    CHAR(1)         NOT NULL        DEFAULT "F",
+    HousekeeperId               INT             NOT NULL,       FOREIGN KEY (HousekeeperId)     REFERENCES  Employee(EmployeeId)
+        ON DELETE CASCADE          ON UPDATE CASCADE
 );
 
 CREATE TABLE HOTEL.Bookings (
@@ -49,7 +60,7 @@ CREATE TABLE HOTEL.Payments (
     Amount                      DECIMAL(5,2)    NOT NULL,
     Paid                        DECIMAL(5,2)    NOT NULL        DEFAULT 0.00,
     PayTime                     DATETIME,
-    Invoice                     VARCHAR(50),
+    Invoice                     VARCHAR(256),
     Cancelled                   CHAR(1)         NOT NULL        DEFAULT "F"
 );
 
@@ -64,17 +75,6 @@ CREATE TABLE HOTEL.Cancellations (
         ON DELETE CASCADE           ON UPDATE CASCADE,
     Nights                      INT             NOT NULL,
     CancelTime                  DATETIME        NOT NULL
-);
-
-CREATE TABLE HOTEL.Employee (
-    FirstName                   VARCHAR(32)     NOT NULL,
-    LastName                    VARCHAR(32)     NOT NULL,
-    EmployeeId                  INT             NOT NULL,       PRIMARY KEY(EmployeeId),        UNIQUE(EmployeeId),
-    SSN                         INT             NOT NULL,                                       UNIQUE(SSN),
-    Birthdate                   DATE        NOT NULL,
-    Address                     VARCHAR(64)     NOT NULL,
-    EmployeeType                VARCHAR(32)     NOT NULL,
-    StartDate                   DATE        NOT NULL
 );
 
 
