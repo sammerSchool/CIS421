@@ -27,7 +27,8 @@ CREATE TABLE HOTEL.Employee (
     Birthdate                   DATE            NOT NULL,
     Address                     VARCHAR(64)     NOT NULL,
     EmployeeType                VARCHAR(32)     NOT NULL,
-    StartDate                   DATE            NOT NULL
+    StartDate                   DATE            NOT NULL,
+    EndDate                     DATE,                           DEFAULT NULL
 );
 
 CREATE TABLE HOTEL.Rooms (
