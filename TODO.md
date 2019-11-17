@@ -42,8 +42,9 @@
             - Make sure Deleting Records don't cause
                 weird NULLs or any Issues
         - [ ] View Queries (5)
-            - [ ] View all Booked Rooms on a Specific Week
+            - [x] View Summary of Given Year
             - [ ] View Current Employees
             - [ ] View Former Employees
-            - [ ] View Certain Month of Bookings
-            - [ ] View Cancelled Booking's Customer Name, Room, and Housekeeper
+            - [x] View Certain Month of Bookings
+                - Non-Cancelled Bookings
+            - [x] View Cancelled Booking's Customer Name, Room, Cost, and Housekeeper
