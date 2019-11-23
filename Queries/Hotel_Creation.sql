@@ -37,8 +37,8 @@ CREATE TABLE HOTEL.Rooms (
     PricePerNight               DECIMAL(5,2)    NOT NULL,
     MaxCapacity                 INT             NOT NULL,
     Occupied                    CHAR(1)         NOT NULL        DEFAULT "F",
-    HousekeeperId               INT             NOT NULL,       FOREIGN KEY (HousekeeperId)     REFERENCES  Employee(EmployeeId)
-        ON DELETE CASCADE          ON UPDATE CASCADE
+    HousekeeperId               INT,                            FOREIGN KEY (HousekeeperId)     REFERENCES  Employee(EmployeeId)
+        ON DELETE SET NULL          ON UPDATE CASCADE
 );
 
 CREATE TABLE HOTEL.Bookings (
