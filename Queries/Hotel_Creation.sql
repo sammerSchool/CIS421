@@ -26,6 +26,12 @@ CREATE TABLE HOTEL.Employee (
     SSN                         VARCHAR(9)      NOT NULL,                                       UNIQUE(SSN),
     Birthdate                   DATE            NOT NULL,
     Address                     VARCHAR(64)     NOT NULL,
+    PostalCode                  VARCHAR(10)     NOT NULL,
+    State                       CHAR(2),
+    City                        VARCHAR(64)     NOT NULL,
+    Country                     VARCHAR(64)     NOT NULL,
+    Email						VARCHAR(64),
+    PhoneNumber					VARCHAR(11)		NOT NULL,
     EmployeeType                VARCHAR(32)     NOT NULL,
     StartDate                   DATE            NOT NULL,
     EndDate                     DATE            DEFAULT NULL
@@ -37,7 +43,7 @@ CREATE TABLE HOTEL.Rooms (
     PricePerNight               DECIMAL(5,2)    NOT NULL,
     MaxCapacity                 INT             NOT NULL,
     Occupied                    CHAR(1)         NOT NULL        DEFAULT "F",
-    HousekeeperId               INT,                            FOREIGN KEY (HousekeeperId)     REFERENCES  Employee(EmployeeId)
+    HousekeeperId               INT,       						FOREIGN KEY (HousekeeperId)     REFERENCES  Employee(EmployeeId)
         ON DELETE SET NULL          ON UPDATE CASCADE
 );
 

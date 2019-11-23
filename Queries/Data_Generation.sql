@@ -13,15 +13,23 @@ VALUES
 
 
 INSERT INTO HOTEL.Employee
-  (FirstName, LastName, EmployeeId, SSN, Birthdate, Address, EmployeeType, StartDate)
+  (FirstName, LastName, EmployeeId, SSN, Birthdate, Address, PostalCode, State, City, Country,
+  Email, PhoneNumber, EmployeeType, StartDate)
 VALUES
-  ("James", "Jones",        111, 123456789, "2000-01-01", "555 Maple",    "Housekeeper", "2019-01-02"),
-  ("John",  "Johnson",      112, 555114444, "1998-11-01", "53 Orchard",   "Housekeeper", "2018-11-02"),
-  ("Joe",   "Jim",          113, 123984756, "1990-07-24", "556 Maple",    "Housekeeper", "2017-02-22"),
-  ("Bob",   "Cooter",       114, 834927781, "1988-08-08", "888 Orchard",  "Housekeeper", "2016-11-04"),
-  ("Frank", "Frankenstien", 115, 333224444, "1964-07-01", "1212 Green",   "Housekeeper", "2000-05-22"),
-  ("Tom",   "Brady",        188, 765831174, "1972-12-25", "7 Goat",       "Manager",     "1996-01-02"),
-  ("Bruce", "Wayne",        888, 314283955, "1972-12-24", "1 Gotham",     "Manager",     "2011-08-12");
+  ("James", "Jones",        111, 123456789, "2000-01-01", "555 Maple", 
+  "48126", "MI", "Dearborn", "America", "my@email.com" , "3131231234",    "Housekeeper", "2019-01-02"),
+  ("John",  "Johnson",      112, 555114444, "1998-11-01", "53 Orchard",
+  "48122", "MI", "Dearborn", "America", "name@email.com" , "3132221234", "Housekeeper", "2018-11-02"),
+  ("Joe",   "Jim",          113, 123984756, "1990-07-24", "556 Maple",
+  "42226", "MI", "Gotham", "America", "@NiceName@mail.com" , "3131234333", "Housekeeper", "2017-02-22"),
+  ("Bob",   "Cooter",       114, 834927781, "1988-08-08", "888 Orchard",
+  "48122", "MI", "Garden City", "America", "Good@email.com" , "3133211234", "Housekeeper", "2016-11-04"),
+  ("Frank", "Frankenstien", 115, 333224444, "1964-07-01", "1212 Green", 
+  "48127", "MI", "Dearborn", "America", "the@email.com" , "3131441234", "Housekeeper", "2000-05-22"),
+  ("Tom",   "Brady",        188, 765831174, "1972-12-25", "7 Goat",
+  "48126", "MI", "Dearborn", "America", "myOnly@email.com" , "3131222234", "Manager",     "1996-01-02"),
+  ("Bruce", "Wayne",        888, 314283955, "1972-12-24", "1 Gotham",
+  "48126", "MI", "Dearborn", "America", "myOnly@email.com" , "3135551234","Manager",     "2011-08-12");
 
 
 INSERT INTO HOTEL.Rooms
